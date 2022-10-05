@@ -1,0 +1,61 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+#need to install dplyr first before filtering!!
+shots_data
+
+#ONLY TEAM A
+team_A = filter(shots_data, team == "Team A")
+team_A
+
+#ONLY TEAM B
+team_B = filter(shots_data, team == "Team B")
+team_B
+```
+
+
+```{r}
+#TEAM A C3
+tA_C3 = filter(team_A, abs(x) >= 22 , abs(y) <= 7.8)
+tA_C3
+plot(y~x, data = tA_C3) + abline(h=7.8, col= "blue") + abline(v = 22, col= "blue")+ abline(v = -22, col= "blue")
+```
+
+```{r}
+#TEAM A NC3
+tA_NC3 = filter(team_A, abs(x) >= 22 & y > 7.8)
+tA_NC3
+
+```
+
+```{r}
+#TEAM A 2PT
+tA_2PT = filter(team_A, abs(x) <= 22, abs(y) <= 23.75)
+tA_2PT
+
+```
+
+
+
+```{r}
+#TEAM B C3
+tB_C3 = filter(team_B, abs(x) >= 22 , abs(y) <= 7.8)
+tB_C3
+```
+
+```{r}
+#TEAM B NC3
+tB_NC3 = filter(team_B, abs(x) >= 23.75, y > 7.8)
+tB_NC3
+```
+
+```{r}
+#TEAM B 2PT
+tB_2PT = filter(team_B, x <= 22, abs(y)<= 23.75)
+tB_2PT
+```
+
+
